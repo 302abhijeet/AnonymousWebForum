@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                background-color:#FFE5B4;
+            }
+        </style>
+<body>
+
+    <h1 style="font-size:400%;color:red;">The Web Forum</h1>
+    </br>
+
+    <div style="background-color:#d3d3d3; padding:12px;border:1px solid black; width:fit-content">
+        <h2>{{threadName}}</h2>
+        <p>{{threadContent["content"]}}</p>
+    </div>
+    
+    <button style="width:7em; height:3em; background-color:#d3d3d3; border:1px solid black" name="" onClick="enterReply(this.name)"> Reply</Button>
+    
+    <script>
+        function enterReply(name){
+            var comment=prompt("Please enter your comment");
+            if (comment!=="" && comment !== null){
+                if(comment.includes("fuck") || comment.includes("dick") || comment.includes("bitch") || comment.includes("kill yourself")) {
+                    alert("COMMENT ABUSIVE");
+                    return;
+                }
+                var comnt = document.createElement('li');
+                comnt.setAttribute("id","anonym"+enterReply.counter+"comment");
+                var span = document.createElement("span");
+                span.style.color = "#000080";
+                span.appendChild(document.createTextNode("anonym"+enterReply.counter));
+                var button = document.createElement("button");
+                button.setAttribute("name","anonym"+enterReply.counter);
+                button.setAttribute("onClick","enterReply(this.name)");
+                button.appendChild(document.createTextNode("Reply"));
+                span.appendChild(button);
+                comnt.appendChild(span);
+                var para = document.createElement("p");
+                para.appendChild(document.createTextNode(comment));
+                comnt.appendChild(para);
+                if(document.getElementById(name+"list")) {
+                    document.getElementById(name+"list").appendChild(comnt);
+                }
+                else {
+                    var list = document.createElement("ul");
+                    list.setAttribute( "id","random_right_now"+"list");
+                    list.appendChild(comnt);
+                    document.getElementById(name+"comment").appendChild(list);
+                }
+                enterReply.counter++;
+           }
+        }
+    enterReply.counter = 0;
+    </script>
+    
+    {% macro createList(commentList,parent_name) %}
+    <ul id = "{{parent_name}}list">
+        {% for comment in commentList %}
+        <li id="{{comment["name"]}}comment"><span style="color:#000080">{{comment["name"]}} <button name="{{comment["name"]}}" onClick="enterReply(this.name)"> Reply</Button> </span>
+            <p>{{comment["content"]}}</p>
+            <script>
+                enterReply.counter++;
+            </script>
+            {% if "comments" in comment %}
+            {{createList(comment["comments"],comment["name"])}}
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endmacro %}
+    
+    {{createList(threadContent["comments"],"")}}
+
+    
+</body>
+
+</html>

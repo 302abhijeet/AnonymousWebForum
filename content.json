@@ -1,0 +1,45 @@
+{
+    "Movies": {
+        "I Love Jackie Chan Movies!!" :{
+            "content" : "I wanted to know more about his work so I created this thread. We can also crititc his works and share our love for him in this thread. thanks!!",
+            "comments" : [
+                {
+                "name" : "Anonym1",
+                "content" : "Really Loved it",
+                "comments" : [
+                    {
+                        "name" : "anun",
+                        "content" : "hated it"
+                    },
+                    {
+                        "name" : " annnn",
+                        "content" : "kinda cool"
+                    }
+                    ]
+                },
+                {
+                    "name" : "annnnsw",
+                    "content" : "Love thus guy",
+                    "comments" : [
+                        {
+                            "name" : "anssde",
+                            "content" : "Yeah dude fs!!"
+                        }]
+                }
+            ]
+        },
+    "HollyWood":{}
+        
+    },
+    "Cricket": {
+        "ICC World Cup":{}
+    },
+    "Games": {
+        "Arcade":{},
+        "Far Cry 4":{},
+        "FPS":{}
+    },
+    "Politics": {
+        "Oil Wars":{}
+    }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                background-color:#FFE5B4;
+            }
+        </style>
+<body>
+
+<h1 style="font-size:400%;color:red;">The Web Forum</h1>
+
+<form method="POST">
+    <span>
+        <label>Title: </label>
+        </br>
+        <input style="width:30%;height:30px" name="title">
+    </span>
+    </br>
+    </br>
+    <span>
+        <label>Content: </label>
+        </br>
+        <textarea style="width:30%;height:125px;" name="content"></textarea>
+    </span>
+    </br>
+    </br>
+    <input style="width:7em;background-color:green; color:white" type="submit">
+</form>
+</br>
+
+<p style="font-size:275%">Categories:</p>
+<ul>
+    {% for category in categoryList %}
+    <li style="font-size:200%"><a href="{{category}}">{{ category }}</a></li>
+    {% endfor %}
+</ul>
+
+<script>
+    function addNewThread() {
+        var title = prompt("Please enter Title");
+        if(title !== "") {
+            var content = prompt("Please enter content for thread");
+            if(content !== "") {
+                
+            }
+        }
+    }
+</script>
+</body>
+</html>
